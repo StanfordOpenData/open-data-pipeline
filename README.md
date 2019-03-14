@@ -1,2 +1,2 @@
 # OpenDataProject
-Extract structured datasets and buildout the Stanford Open Data Portal
+Extract structured datasets for the Stanford Open Data Project
