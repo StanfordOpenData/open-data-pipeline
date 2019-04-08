@@ -77,9 +77,10 @@ if __name__ == '__main__':
     # Save the JSON
     f = open( 'metadata.json', 'w')
     f.write(out)
+    f.close()
     print("JSON saved!")
 
     import boto3
     # Create an S3 client
     s3 = boto3.client('s3')
-    s3.upload_file('metadata.json', 'open-data-portal', 'metadata.json', ExtraArgs={'ContentType': "text/csv", 'ACL':'public-read'})
+    s3.upload_file('metadata.json', 'open-data-portal', 'metadata.json', ExtraArgs={'ContentType': "application/json", 'ACL':'public-read'})
