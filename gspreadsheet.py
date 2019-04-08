@@ -53,12 +53,33 @@ def main():
             print(row)
 
     with open('output.csv', mode='w') as writeFile:
-		fieldnames = ['create_date', 'source_url', 'description']
-		writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
-		writer.writeheader()
-		for row in values:
-			writer.writerow({'create_date': row[1], 'source_url': row[2], 'description': row[3]})
+        fieldnames = ['name', 'create_date', 'source_url', 'description']
+        writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in values:
+            writer.writerow({'name': row[0], 'create_date': row[1], 'source_url': row[2], 'description': row[3]})
 
 
 if __name__ == '__main__':
     main()
+
+    import csv
+    import json
+
+    filename = 'output.csv'
+    # Open the CSV
+    f = open(filename, 'rU' )
+    # Change each fieldname to the appropriate field name. I know, so difficult.
+    reader = csv.DictReader(f, fieldnames = ( "name","create_date","source_url","description" ))
+    # Parse the CSV into JSON
+    out = json.dumps( [ row for row in reader ] )
+    print("JSON parsed!")
+    # Save the JSON
+    f = open( 'metadata.json', 'w')
+    f.write(out)
+    print("JSON saved!")
+
+    import boto3
+    # Create an S3 client
+    s3 = boto3.client('s3')
+    s3.upload_file('metadata.json', 'open-data-portal', 'metadata.json', ExtraArgs={'ContentType': "text/csv", 'ACL':'public-read'})
