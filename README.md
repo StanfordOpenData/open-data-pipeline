@@ -5,6 +5,7 @@ Use Python 3.
 
 ```
 pip3 install awscli boto3
+pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 aws configure
 # enter access key id and secret access key
 ```
