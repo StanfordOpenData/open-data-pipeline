@@ -12,7 +12,8 @@ from tabula import read_pdf
 
 endowment = ['endowment.csv','https://irds.stanford.edu/sites/g/files/sbiybj10071/f/5.2_endowment.pdf']
 fac_adm = ['facilities_administration.csv', 'https://irds.stanford.edu/sites/default/files/5.6_facilities-administrative_cost_rates.pdf']
-pdfs = [endowment, fac_adm]
+pop17 = ['population_report_FY17.csv', 'https://irds.stanford.edu/sites/g/files/sbiybj10071/f/population_report_fy17.pdf']
+pdfs = [endowment, fac_adm, pop17]
 
 for data in pdfs:
 	name = data[0]; url = data[1];
