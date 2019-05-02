@@ -53,12 +53,12 @@ def main():
             print(row)
 
     with open('output.csv', mode='w') as writeFile:
-        fieldnames = ['name', 'create_date', 'source_url', 'description']
+        fieldnames = ['name', 'display_name', 'create_date', 'source_url', 'description', 'tags']
         writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
         writer.writeheader()
-        for row in values:
-            writer.writerow({'name': row[0], 'create_date': row[1], 'source_url': row[2], 'description': row[3]})
-
+        for i in range(1, len(values)):
+            row = values[i]
+            writer.writerow({'name': row[0], 'display_name': row[1], 'create_date': row[2], 'source_url': row[3], 'description': row[4], 'tags': row[5]})
 
 if __name__ == '__main__':
     main()
