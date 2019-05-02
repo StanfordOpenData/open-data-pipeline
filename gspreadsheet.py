@@ -11,7 +11,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1q7p4k5Op8fHLyNtai4OeN0AN3oDhM6SC4IoEiztSuvI'
-SAMPLE_RANGE_NAME = 'Sheet1!A2:D'
+SAMPLE_RANGE_NAME = 'Sheet1!A2:F'
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -56,8 +56,7 @@ def main():
         fieldnames = ['name', 'display_name', 'create_date', 'source_url', 'description', 'tags']
         writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
         writer.writeheader()
-        for i in range(1, len(values)):
-            row = values[i]
+        for row in values:
             writer.writerow({'name': row[0], 'display_name': row[1], 'create_date': row[2], 'source_url': row[3], 'description': row[4], 'tags': row[5]})
 
 if __name__ == '__main__':
@@ -70,9 +69,11 @@ if __name__ == '__main__':
     # Open the CSV
     f = open(filename, 'rU' )
     # Change each fieldname to the appropriate field name. I know, so difficult.
-    reader = csv.DictReader(f, fieldnames = ( "name","create_date","source_url","description" ))
+    reader = csv.DictReader(f, fieldnames = ( "name","display_name","create_date","source_url","description","tags" ))
     # Parse the CSV into JSON
-    out = json.dumps( [ row for row in reader ] )
+    data = [row for row in reader]
+    data = data[1:]
+    out = json.dumps( data )
     print("JSON parsed!")
     # Save the JSON
     f = open( 'metadata.json', 'w')
