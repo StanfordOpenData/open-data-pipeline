@@ -12,8 +12,8 @@ aws configure
 
 ```
 pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-run gspreadsheet.py
-This will query the google sheet API, bring in the file as csv, convert to JSON, and upload to AWS
+python3 gspreadsheet.py
+# This will query the google sheet API, bring in the file as csv, convert to JSON, and upload to AWS
 ```
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
