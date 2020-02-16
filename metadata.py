@@ -11,7 +11,7 @@ filename = 'output.csv'
 # Open the CSV
 f = open(filename, 'rU' )
 # Change each fieldname to the appropriate field name. I know, so difficult.
-reader = csv.DictReader(f, fieldnames = ( "name","create_date","source_url","description" ))
+reader = csv.DictReader(f, fieldnames = ( "name","create_date","source_url","description","tags", "stories"))
 # Parse the CSV into JSON
 out = json.dumps( [ row for row in reader ] )
 print("JSON parsed!")
