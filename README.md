@@ -16,6 +16,6 @@ python3 gspreadsheet.py
 # This will query the google sheet API, bring in the file as csv, convert to JSON, and upload to AWS
 ```
 
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
+gspreadsheet.py pulls metada from the google sheet as a csv and converts to JSON. To upload to an S3 bucket in AWS requires configuring S3 with boto3.
 
 ```
