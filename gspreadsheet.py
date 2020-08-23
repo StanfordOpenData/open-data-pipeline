@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # Open the CSV
     f = open(filename, 'rU' )
     # Change each fieldname to the appropriate field name. I know, so difficult.
-    reader = csv.DictReader(f, fieldnames = ( "name","display_name","create_date","source_url","description","tags","stories","source" ))
+    reader = csv.DictReader(f, fieldnames = ( "name","display_name","create_date","source_url","description","tags","stories","source", "owner"))
     # Parse the CSV into JSON
     data = [row for row in reader]
     data = data[1:]
